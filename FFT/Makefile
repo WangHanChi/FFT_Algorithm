@@ -1,7 +1,6 @@
-CC := gcc
-
+#CC := gcc
+CFLAGS := -lm
 target:
-	$(CC) FFT.c UseFFT.c -o FFT 
-
+	$(CC) FFT.c UseFFT.c -o FFT $(CFLAGS) 
 clean:
-	rm FFT
+	$(RM) FFT
