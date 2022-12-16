@@ -23,15 +23,15 @@ void complex_sub(Complex *c1, Complex *c2, Complex *c3)
 
 void complex_mul(Complex *c1, Complex *c2, Complex *c3)
 {
-    c3->Re = c1->Re * c2->Re;
-    c3->Im = c1->Im * c2->Im;
+    c3->Re = c1->Re * c2->Re - c1->Im * c2->Im;
+    c3->Im = c1->Re * c2->Im + c1->Im * c2->Re;
 }
 
-void complex_div(Complex *c1, Complex *c2, Complex *c3)
-{
-    c3->Re = c1->Re / c2->Re;
-    c3->Im = c1->Im / c2->Im;
-}
+// void complex_div(Complex *c1, Complex *c2, Complex *c3)
+// {
+//     c3->Re = c1->Re / c2->Re;
+//     c3->Im = c1->Im / c2->Im;
+// }
 
 void Get_Conjugate(int num, Complex *cinput, Complex *coutput)
 {
@@ -41,14 +41,15 @@ void Get_Conjugate(int num, Complex *cinput, Complex *coutput)
         coutput[i].Im = -cinput[i].Im;
     }
 }
-void bit_reverse(int num, Complex *c)
+int index_reverse(int num, int bit)
 {
-    int M = 0;
-    while (num != 1)
+    int return_value = 0;
+    for (int i = 0; i < num; ++i)
     {
-        M++;
-        num /= 2;
+        if (num & (1 << i))
+            return_value |= (bit >> ((num - 1) - i) & 1) << i;
     }
+    return return_value;
 }
 
 void DIT_FFT(int num, Complex *c)
