@@ -41,6 +41,7 @@ int main(int argc, char **argv)
 
             for (int i = 0; i < num; i++)
             {
+                // test[i].Re = 63 - i;
                 test[i].Re = i;
             }
         }
