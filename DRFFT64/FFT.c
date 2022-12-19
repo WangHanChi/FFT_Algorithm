@@ -204,9 +204,19 @@ void DRFFT64(Complex *c1, Complex *c2)
     for (int i = 0; i < 64; i++)
     {
         total[i].Re = c1[i].Re;
-        total[i].Im = c2[i].Im;
+        total[i].Im = c2[i].Re;
     }
+    // printf("Here total before\n");
+    // for (int i = 0; i < 64; i++)
+    // {
+    //     printf("[%d]\t%lf\t%lf\n", i, total[i].Re, total[i].Im);
+    // }
     FFT64(total);
+    // printf("Here total\n");
+    // for (int i = 0; i < 64; i++)
+    // {
+    //     printf("[%d]\t%lf\t%lf\n", i, total[i].Re, total[i].Im);
+    // }
     Complex *total_reverse = malloc(sizeof(Complex) * 64);
     for (int i = 0; i < 64; ++i)
     {
@@ -235,13 +245,19 @@ void DRFFT64(Complex *c1, Complex *c2)
     //     printf("[%d]\t%lf\t%lf\n", i, total_reverse_conj[i].Re, total_reverse_conj[i].Im);
     // }
     Get_Conjugate(64, total_reverse_conj, total_reverse_conj);
+    // printf("Here conj\n");
+    // for (int i = 0; i < 64; i++)
+    // {
+    //     printf("[%d]\t%lf\t%lf\n", i, total_reverse_conj[i].Re, total_reverse_conj[i].Im);
+    // }
     for (int i = 0; i < 64; ++i)
     {
-        printf("total[%d]\t%lf\t%lf\t", i, total[i].Re, total[i].Im);
-        printf("total_reverse_conj[%d]\t%lf\t%lf\n", i, total_reverse_conj[i].Re, total_reverse_conj[i].Im);
+        // printf("total[%d]\t%lf\t%lf\t", i, total[i].Re, total[i].Im);
+        // printf("total_reverse_conj[%d]\t%lf\t%lf\n", i, total_reverse_conj[i].Re, total_reverse_conj[i].Im);
         c1[i].Re = (total[i].Re + total_reverse_conj[i].Re) / 2;
         c1[i].Im = (total[i].Im + total_reverse_conj[i].Im) / 2;
-        c2[i].Re = (-total[i].Re - total_reverse_conj[i].Re) / 2;
-        c2[i].Im = (-total[i].Im - total_reverse_conj[i].Im) / 2;
+        c2[i].Im = (total[i].Re - total_reverse_conj[i].Re) / 2;
+        c2[i].Re = (total[i].Im - total_reverse_conj[i].Im) / 2;
     }
+    Get_Conjugate(64, c2, c2);
 }

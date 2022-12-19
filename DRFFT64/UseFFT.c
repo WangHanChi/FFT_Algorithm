@@ -30,7 +30,7 @@ int main(int argc, char **argv)
             for (int i = 0; i < 64; i++)
             {
                 test[i].Re = i;
-                test2[i].Re = 63 - i;
+                test2[i].Re = i + 5;
             }
         }
         else if (order == 'n')

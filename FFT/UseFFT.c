@@ -41,8 +41,8 @@ int main(int argc, char **argv)
 
             for (int i = 0; i < num; i++)
             {
-                // test[i].Re = 63 - i;
-                test[i].Re = i;
+                // test[i].Im = 63 - i;
+                test[i].Re = i + 5;
             }
         }
         else if (order == 'n')
