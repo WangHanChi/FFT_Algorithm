@@ -25,7 +25,6 @@ int main(int argc, char **argv)
     }
 
     printf("A direct real autocorrecttion computation program\n\n");
-
     return 0;
 }
 
