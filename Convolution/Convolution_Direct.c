@@ -26,6 +26,7 @@ int main(int argc, char **argv)
     {
         printf("out[%d] : %lf\n", i, out[i]);
     }
+
     printf("==========================================\n");
 
     printf("(b) a real convolution program by calling DRFFT64(x, y) once\n\n");
@@ -42,6 +43,7 @@ int main(int argc, char **argv)
     {
         printf("out2[ %d ]:\t %lf     \t%lf\n", i, out2[i].Re, out2[i].Im);
     }
+    free(out2);
     free(out);
     return 0;
 }
@@ -63,6 +65,8 @@ Complex *Convolution_DFRRT64(Complex *new_x, Complex *new_y)
         out[i] = temp;
     }
     IFFT64(out);
+    free(new_y);
+    free(new_x);
     return out;
 }
 
@@ -96,5 +100,7 @@ double *Convolution_Direct(double *x, double *h)
                 out[i] = out[i] + x[j] * h[i - j];
         }
     }
+    free(h);
+    free(x);
     return out;
 }

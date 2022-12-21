@@ -98,6 +98,7 @@ int main(int argc, char **argv)
         //     printf("[ %d ]\t%lf\t%lf\n", i, test[i].Re, test[i].Im);
         // }
         printf("===========================================\n\n\n");
+        free(test2);
         free(test);
     }
 

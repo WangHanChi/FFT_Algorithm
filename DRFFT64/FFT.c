@@ -168,6 +168,9 @@ void FFT64(Complex *c)
         c[i] = temp;
         // printf("%d\t%lf\t%lf\n", i, c[i].Re, c[i].Im);
     }
+    free(Wn);
+    free(odd32);
+    free(even32);
 }
 
 void reverse(Complex *c)
@@ -182,6 +185,7 @@ void reverse(Complex *c)
     {
         c[i] = temp[63 - i];
     }
+    free(temp);
 }
 
 void IFFT64(Complex *c)
@@ -260,4 +264,7 @@ void DRFFT64(Complex *c1, Complex *c2)
         c2[i].Re = (total[i].Im - total_reverse_conj[i].Im) / 2;
     }
     Get_Conjugate(64, c2, c2);
+    free(total_reverse_conj);
+    free(total_reverse);
+    free(total);
 }

@@ -168,6 +168,9 @@ void FFT64(Complex *c)
         c[i] = temp;
         // printf("%d\t%lf\t%lf\n", i, c[i].Re, c[i].Im);
     }
+    free(Wn);
+    free(odd32);
+    free(even32);
 }
 
 void IFFT64(Complex *c)
