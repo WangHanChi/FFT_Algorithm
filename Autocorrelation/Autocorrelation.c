@@ -8,6 +8,7 @@
 void auto_direct(double *, double *);
 void auto_DRFFT64(Complex *, Complex *);
 
+
 int main(int argc, char **argv)
 {
     printf("DSP Program HW2-1\n\n(a)\n");
