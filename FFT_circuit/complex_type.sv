@@ -8,7 +8,7 @@ package complex_type
     logic signed [DATA_WIDTH-1:0] Im;
    } Complex;
 
-   // Complex cal func
+   // Complex calculate funcnction
 
    // mul
    function Complex complex_mul(Complex a, Complex b);
